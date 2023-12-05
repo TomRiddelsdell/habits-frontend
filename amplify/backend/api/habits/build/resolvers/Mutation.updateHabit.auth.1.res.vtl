@@ -11,6 +11,9 @@ $util.qr($ctx.stash.put("hasAuth", true))
 #if( $util.authType() == "API Key Authorization" )
 $util.unauthorized()
 #end
+#if( $util.authType() == "Lambda Authorization" )
+$util.unauthorized()
+#end
 #if( $util.authType() == "IAM Authorization" )
   #foreach( $adminRole in $ctx.stash.adminRoles )
     #if( $ctx.identity.userArn.contains($adminRole) && $ctx.identity.userArn != $ctx.stash.authRole && $ctx.identity.userArn != $ctx.stash.unauthRole )
@@ -43,6 +46,9 @@ $util.unauthorized()
       #end
     #end
   #end
+#end
+#if( $util.authType() == "Open ID Connect Authorization" )
+
 #end
 #if( !$isAuthorized && $allowedFields.isEmpty() && $nullAllowedFields.isEmpty() )
 $util.unauthorized()

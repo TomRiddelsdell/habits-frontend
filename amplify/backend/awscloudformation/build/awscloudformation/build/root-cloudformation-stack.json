@@ -155,7 +155,7 @@
     "apihabits": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-habits-staging-61850-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-habits-dev-82229-deployment/amplify-cfn-templates/api/cloudformation-template.json",
         "Parameters": {
           "AppSyncApiName": "habits",
           "DynamoDBBillingMode": "PAY_PER_REQUEST",
@@ -172,16 +172,16 @@
           "unauthRoleName": {
             "Ref": "UnauthRoleName"
           },
-          "S3DeploymentBucket": "amplify-habits-staging-61850-deployment",
-          "S3DeploymentRootKey": "amplify-appsync-files/053c76730de3c451961a0c6194e4ebbde1cf2ae3",
-          "env": "staging"
+          "S3DeploymentBucket": "amplify-habits-dev-82229-deployment",
+          "S3DeploymentRootKey": "amplify-appsync-files/46d4ae48d8e6b648bc9e9ba165df95ef36b1bae7",
+          "env": "dev"
         }
       }
     },
     "authhabits": {
       "Type": "AWS::CloudFormation::Stack",
       "Properties": {
-        "TemplateURL": "https://s3.amazonaws.com/amplify-habits-staging-61850-deployment/amplify-cfn-templates/auth/habits-cloudformation-template.json",
+        "TemplateURL": "https://s3.amazonaws.com/amplify-habits-dev-82229-deployment/amplify-cfn-templates/auth/habits-cloudformation-template.json",
         "Parameters": {
           "identityPoolName": "testAuthIdentityPool",
           "allowUnauthenticatedIdentities": false,
@@ -232,7 +232,18 @@
           },
           "breakCircularDependency": true,
           "dependsOn": "",
-          "env": "staging"
+          "env": "dev"
+        }
+      }
+    },
+    "functiongraphQlLambdaAuthorizer86bdc800": {
+      "Type": "AWS::CloudFormation::Stack",
+      "Properties": {
+        "TemplateURL": "https://s3.amazonaws.com/amplify-habits-dev-82229-deployment/amplify-cfn-templates/function/graphQlLambdaAuthorizer86bdc800-cloudformation-template.json",
+        "Parameters": {
+          "deploymentBucketName": "amplify-habits-dev-82229-deployment",
+          "s3Key": "amplify-builds/graphQlLambdaAuthorizer86bdc800-6f6f7a2f4934627a7755-build.zip",
+          "env": "dev"
         }
       }
     },

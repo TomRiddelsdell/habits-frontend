@@ -14,21 +14,39 @@
         "authConfig": {
           "additionalAuthenticationProviders": [
             {
+              "apiKeyConfig": {
+                "apiKeyExpirationDate": "2024-12-04T08:27:45.491Z",
+                "apiKeyExpirationDays": 365,
+                "description": "frontend api key"
+              },
+              "authenticationType": "API_KEY"
+            },
+            {
               "authenticationType": "AWS_IAM"
             },
             {
-              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-              "userPoolConfig": {
-                "userPoolId": "authhabits"
+              "authenticationType": "OPENID_CONNECT",
+              "openIDConnectConfig": {
+                "authTTL": "1",
+                "clientId": "",
+                "iatTTL": "1",
+                "issuerUrl": "https://I+Shouldnt+have+selected+this/",
+                "name": "OpenIdConnectProviderName"
+              }
+            },
+            {
+              "authenticationType": "AWS_LAMBDA",
+              "lambdaAuthorizerConfig": {
+                "lambdaFunction": "graphQlLambdaAuthorizer86bdc800",
+                "ttlSeconds": "300"
               }
             }
           ],
           "defaultAuthentication": {
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 30,
-              "description": "api key description"
-            },
-            "authenticationType": "API_KEY"
+            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+            "userPoolConfig": {
+              "userPoolId": "authhabits"
+            }
           }
         }
       },
@@ -68,6 +86,31 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    }
+  },
+  "function": {
+    "graphQlLambdaAuthorizer86bdc800": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_graphQlLambdaAuthorizer86bdc800_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "graphQlLambdaAuthorizer86bdc800"
+        }
+      ]
+    },
+    "AMPLIFY_function_graphQlLambdaAuthorizer86bdc800_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "graphQlLambdaAuthorizer86bdc800"
+        }
+      ]
     }
   }
 }

@@ -12,6 +12,9 @@ $util.unauthorized()
   #end
 $util.unauthorized()
 #end
+#if( $util.authType() == "Lambda Authorization" )
+$util.unauthorized()
+#end
 #if( $util.authType() == "User Pool Authorization" )
   #set( $isAuthorized = true )
   #if( !$isAuthorized )
@@ -38,6 +41,9 @@ $util.unauthorized()
       #end
     #end
   #end
+#end
+#if( $util.authType() == "Open ID Connect Authorization" )
+
 #end
 #if( !$isAuthorized )
 $util.unauthorized()
