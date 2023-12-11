@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import "@aws-amplify/ui-react/styles.css";
-import { API } from "aws-amplify";
+import { generateClient } from 'aws-amplify/api';
 import {
   Button,
   Flex,
@@ -16,6 +16,8 @@ import {
   createHabit as createHabitMutation,
   deleteHabit as deleteHabitMutation,
 } from "./graphql/mutations";
+import { HabitCreateForm } from "./ui-components"
+const API = generateClient();
 
 const App = ({ signOut }) => {
   const [notes, setHabits] = useState([]);
@@ -30,7 +32,7 @@ const App = ({ signOut }) => {
     setHabits(notesFromAPI);
   }
 
-  async function createHabit(event) {
+/*  async function createHabit(event) {
     event.preventDefault();
     const form = new FormData(event.target);
     const data = {
@@ -43,7 +45,7 @@ const App = ({ signOut }) => {
     });
     fetchHabits();
     event.target.reset();
-  }
+  }*/
 
   async function deleteHabit({ id }) {
     const newHabits = notes.filter((note) => note.id !== id);
@@ -57,29 +59,8 @@ const App = ({ signOut }) => {
   return (
     <View className="App">
       <Heading level={1}>My Habits App</Heading>
-      <View as="form" margin="3rem 0" onSubmit={createHabit}>
-        <Flex direction="row" justifyContent="center">
-          <TextField
-            name="name"
-            placeholder="Habit Name"
-            label="Habit Name"
-            labelHidden
-            variation="quiet"
-            required
-          />
-          <TextField
-            name="description"
-            placeholder="Habit Description"
-            label="Habit Description"
-            labelHidden
-            variation="quiet"
-            required
-          />
-          <Button type="submit" variation="primary">
-            Create Habit
-          </Button>
-        </Flex>
-      </View>
+      
+      <HabitCreateForm />
       <Heading level={2}>Current Habits</Heading>
       <View margin="3rem 0">
         {notes.map((note) => (
