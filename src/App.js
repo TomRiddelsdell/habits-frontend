@@ -17,7 +17,12 @@ import {
   deleteHabit as deleteHabitMutation,
 } from "./graphql/mutations";
 import { HabitCreateForm } from "./ui-components"
-const API = generateClient();
+import {
+ HabitCollection 
+} from './ui-components';
+
+<HabitCollection />
+const API = generateClient()amplify pull --appId d1n1ss0njcp6bk --envName dev;
 
 const App = ({ signOut }) => {
   const [notes, setHabits] = useState([]);
@@ -61,6 +66,7 @@ const App = ({ signOut }) => {
       <Heading level={1}>My Habits App</Heading>
       
       <HabitCreateForm />
+      <HabitCollection />
       <Heading level={2}>Current Habits</Heading>
       <View margin="3rem 0">
         {notes.map((note) => (

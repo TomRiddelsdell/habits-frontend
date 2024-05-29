@@ -199,6 +199,123 @@
           ],
           "Version": "2012-10-17"
         },
+        "Policies": [
+          {
+            "PolicyDocument": {
+              "Statement": [
+                {
+                  "Action": [
+                    "dynamodb:BatchGetItem",
+                    "dynamodb:BatchWriteItem",
+                    "dynamodb:PutItem",
+                    "dynamodb:DeleteItem",
+                    "dynamodb:GetItem",
+                    "dynamodb:Scan",
+                    "dynamodb:Query",
+                    "dynamodb:UpdateItem",
+                    "dynamodb:ConditionCheckItem",
+                    "dynamodb:DescribeTable",
+                    "dynamodb:GetRecords",
+                    "dynamodb:GetShardIterator"
+                  ],
+                  "Effect": "Allow",
+                  "Resource": [
+                    {
+                      "Fn::Sub": [
+                        "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}",
+                        {
+                          "tablename": {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "Habit-",
+                                {
+                                  "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+                                },
+                                "-",
+                                {
+                                  "Ref": "referencetotransformerrootstackenv10C5A902Ref"
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "Fn::Sub": [
+                        "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}/*",
+                        {
+                          "tablename": {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "Habit-",
+                                {
+                                  "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+                                },
+                                "-",
+                                {
+                                  "Ref": "referencetotransformerrootstackenv10C5A902Ref"
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "Fn::Sub": [
+                        "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}",
+                        {
+                          "tablename": {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "AmplifyDataStore-",
+                                {
+                                  "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+                                },
+                                "-",
+                                {
+                                  "Ref": "referencetotransformerrootstackenv10C5A902Ref"
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "Fn::Sub": [
+                        "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}/*",
+                        {
+                          "tablename": {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "AmplifyDataStore-",
+                                {
+                                  "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
+                                },
+                                "-",
+                                {
+                                  "Ref": "referencetotransformerrootstackenv10C5A902Ref"
+                                }
+                              ]
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "Version": "2012-10-17"
+            },
+            "PolicyName": "DynamoDBAccess"
+          }
+        ],
         "RoleName": {
           "Fn::Join": [
             "",
@@ -214,169 +331,6 @@
             ]
           ]
         }
-      }
-    },
-    "HabitIAMRoleDefaultPolicy32B0F4EC": {
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": [
-                "dynamodb:BatchGetItem",
-                "dynamodb:GetRecords",
-                "dynamodb:GetShardIterator",
-                "dynamodb:Query",
-                "dynamodb:GetItem",
-                "dynamodb:Scan",
-                "dynamodb:ConditionCheckItem",
-                "dynamodb:BatchWriteItem",
-                "dynamodb:PutItem",
-                "dynamodb:UpdateItem",
-                "dynamodb:DeleteItem",
-                "dynamodb:DescribeTable"
-              ],
-              "Effect": "Allow",
-              "Resource": [
-                {
-                  "Fn::GetAtt": [
-                    "HabitTable",
-                    "Arn"
-                  ]
-                },
-                {
-                  "Ref": "AWS::NoValue"
-                }
-              ]
-            }
-          ],
-          "Version": "2012-10-17"
-        },
-        "PolicyName": "HabitIAMRoleDefaultPolicy32B0F4EC",
-        "Roles": [
-          {
-            "Ref": "HabitIAMRole128BE244"
-          }
-        ]
-      }
-    },
-    "DynamoDBAccess71ABE5AE": {
-      "Type": "AWS::IAM::Policy",
-      "Properties": {
-        "PolicyDocument": {
-          "Statement": [
-            {
-              "Action": [
-                "dynamodb:BatchGetItem",
-                "dynamodb:BatchWriteItem",
-                "dynamodb:PutItem",
-                "dynamodb:DeleteItem",
-                "dynamodb:GetItem",
-                "dynamodb:Scan",
-                "dynamodb:Query",
-                "dynamodb:UpdateItem"
-              ],
-              "Effect": "Allow",
-              "Resource": [
-                {
-                  "Fn::Sub": [
-                    "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}",
-                    {
-                      "tablename": {
-                        "Fn::Join": [
-                          "",
-                          [
-                            "Habit-",
-                            {
-                              "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
-                            },
-                            "-",
-                            {
-                              "Ref": "referencetotransformerrootstackenv10C5A902Ref"
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  ]
-                },
-                {
-                  "Fn::Sub": [
-                    "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}/*",
-                    {
-                      "tablename": {
-                        "Fn::Join": [
-                          "",
-                          [
-                            "Habit-",
-                            {
-                              "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
-                            },
-                            "-",
-                            {
-                              "Ref": "referencetotransformerrootstackenv10C5A902Ref"
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  ]
-                },
-                {
-                  "Fn::Sub": [
-                    "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}",
-                    {
-                      "tablename": {
-                        "Fn::Join": [
-                          "",
-                          [
-                            "AmplifyDataStore-",
-                            {
-                              "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
-                            },
-                            "-",
-                            {
-                              "Ref": "referencetotransformerrootstackenv10C5A902Ref"
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  ]
-                },
-                {
-                  "Fn::Sub": [
-                    "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${tablename}/*",
-                    {
-                      "tablename": {
-                        "Fn::Join": [
-                          "",
-                          [
-                            "AmplifyDataStore-",
-                            {
-                              "Ref": "referencetotransformerrootstackGraphQLAPI20497F53ApiId"
-                            },
-                            "-",
-                            {
-                              "Ref": "referencetotransformerrootstackenv10C5A902Ref"
-                            }
-                          ]
-                        ]
-                      }
-                    }
-                  ]
-                }
-              ]
-            }
-          ],
-          "Version": "2012-10-17"
-        },
-        "PolicyName": "DynamoDBAccess71ABE5AE",
-        "Roles": [
-          {
-            "Ref": "HabitIAMRole128BE244"
-          }
-        ]
       }
     },
     "HabitDataSource": {
@@ -600,7 +554,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"eu-west-2:774417df-563f-4f1b-88a5-d7055ca568b7\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_omR0SLUqy_Full-access/CognitoIdentityCredentials\",\"eu-west-2_omR0SLUqy_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_bgwPy8bLd_Full-access/CognitoIdentityCredentials\",\"eu-west-2_bgwPy8bLd_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -721,7 +675,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"eu-west-2:774417df-563f-4f1b-88a5-d7055ca568b7\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_omR0SLUqy_Full-access/CognitoIdentityCredentials\",\"eu-west-2_omR0SLUqy_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_bgwPy8bLd_Full-access/CognitoIdentityCredentials\",\"eu-west-2_bgwPy8bLd_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -842,7 +796,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"eu-west-2:774417df-563f-4f1b-88a5-d7055ca568b7\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_omR0SLUqy_Full-access/CognitoIdentityCredentials\",\"eu-west-2_omR0SLUqy_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_bgwPy8bLd_Full-access/CognitoIdentityCredentials\",\"eu-west-2_bgwPy8bLd_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1029,7 +983,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"eu-west-2:774417df-563f-4f1b-88a5-d7055ca568b7\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_omR0SLUqy_Full-access/CognitoIdentityCredentials\",\"eu-west-2_omR0SLUqy_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_bgwPy8bLd_Full-access/CognitoIdentityCredentials\",\"eu-west-2_bgwPy8bLd_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1237,7 +1191,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"eu-west-2:774417df-563f-4f1b-88a5-d7055ca568b7\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_omR0SLUqy_Full-access/CognitoIdentityCredentials\",\"eu-west-2_omR0SLUqy_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_bgwPy8bLd_Full-access/CognitoIdentityCredentials\",\"eu-west-2_bgwPy8bLd_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1409,7 +1363,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"eu-west-2:774417df-563f-4f1b-88a5-d7055ca568b7\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_omR0SLUqy_Full-access/CognitoIdentityCredentials\",\"eu-west-2_omR0SLUqy_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_bgwPy8bLd_Full-access/CognitoIdentityCredentials\",\"eu-west-2_bgwPy8bLd_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1546,7 +1500,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"eu-west-2:774417df-563f-4f1b-88a5-d7055ca568b7\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_omR0SLUqy_Full-access/CognitoIdentityCredentials\",\"eu-west-2_omR0SLUqy_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_bgwPy8bLd_Full-access/CognitoIdentityCredentials\",\"eu-west-2_bgwPy8bLd_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1608,7 +1562,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"eu-west-2:774417df-563f-4f1b-88a5-d7055ca568b7\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_omR0SLUqy_Full-access/CognitoIdentityCredentials\",\"eu-west-2_omR0SLUqy_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_bgwPy8bLd_Full-access/CognitoIdentityCredentials\",\"eu-west-2_bgwPy8bLd_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1670,7 +1624,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"eu-west-2:774417df-563f-4f1b-88a5-d7055ca568b7\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_omR0SLUqy_Full-access/CognitoIdentityCredentials\",\"eu-west-2_omR0SLUqy_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_bgwPy8bLd_Full-access/CognitoIdentityCredentials\",\"eu-west-2_bgwPy8bLd_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },
@@ -1765,7 +1719,7 @@
               {
                 "Ref": "referencetotransformerrootstackunauthRoleName49F3C1FERef"
               },
-              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"identityPoolId\", \"eu-west-2:774417df-563f-4f1b-88a5-d7055ca568b7\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_omR0SLUqy_Full-access/CognitoIdentityCredentials\",\"eu-west-2_omR0SLUqy_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
+              "/CognitoIdentityCredentials\"))\n$util.qr($ctx.stash.put(\"adminRoles\", [\"eu-west-2_bgwPy8bLd_Full-access/CognitoIdentityCredentials\",\"eu-west-2_bgwPy8bLd_Manage-only/CognitoIdentityCredentials\"]))\n$util.toJson({})"
             ]
           ]
         },

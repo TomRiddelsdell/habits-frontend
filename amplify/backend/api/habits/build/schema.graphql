@@ -170,10 +170,13 @@ input ModelHabitFilterInput {
   id: ModelIDInput
   Name: ModelStringInput
   Description: ModelStringInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
   and: [ModelHabitFilterInput]
   or: [ModelHabitFilterInput]
   not: ModelHabitFilterInput
   _deleted: ModelBooleanInput
+  owner: ModelStringInput
 }
 
 type Query {
@@ -189,6 +192,9 @@ input ModelHabitConditionInput {
   or: [ModelHabitConditionInput]
   not: ModelHabitConditionInput
   _deleted: ModelBooleanInput
+  createdAt: ModelStringInput
+  updatedAt: ModelStringInput
+  owner: ModelStringInput
 }
 
 input CreateHabitInput {
@@ -220,9 +226,12 @@ input ModelSubscriptionHabitFilterInput {
   id: ModelSubscriptionIDInput
   Name: ModelSubscriptionStringInput
   Description: ModelSubscriptionStringInput
+  createdAt: ModelSubscriptionStringInput
+  updatedAt: ModelSubscriptionStringInput
   and: [ModelSubscriptionHabitFilterInput]
   or: [ModelSubscriptionHabitFilterInput]
   _deleted: ModelBooleanInput
+  owner: ModelStringInput
 }
 
 type Subscription {

@@ -2,7 +2,7 @@
   "providers": [
     "awscloudformation"
   ],
-  "projectName": "habits",
+  "projectName": "habitsfrontend",
   "version": "3.1",
   "frontend": "javascript",
   "javascript": {

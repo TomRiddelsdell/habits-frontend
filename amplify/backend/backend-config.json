@@ -94,23 +94,5 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
-  },
-  "parameters": {
-    "AMPLIFY_function_graphQlLambdaAuthorizer86bdc800_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "graphQlLambdaAuthorizer86bdc800"
-        }
-      ]
-    },
-    "AMPLIFY_function_graphQlLambdaAuthorizer86bdc800_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "graphQlLambdaAuthorizer86bdc800"
-        }
-      ]
-    }
   }
 }

@@ -9,6 +9,6 @@
         ]
     },
     "AuthModeLastUpdated": "2023-12-05T08:31:12.920Z",
-    "S3DeploymentBucket": "amplify-habits-dev-82229-deployment",
+    "S3DeploymentBucket": "amplify-amplifybf5769864d484-staging-71923-deployment",
     "S3DeploymentRootKey": "amplify-appsync-files/46d4ae48d8e6b648bc9e9ba165df95ef36b1bae7"
 }
